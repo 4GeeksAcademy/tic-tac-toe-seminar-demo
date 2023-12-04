@@ -40,10 +40,6 @@ function App() {
   const [boardState, setBoardState] = useState(initialBoardState());
 
   const setPiece = (idx) => {
-    if (currentPlayer === null) {
-      return;
-    }
-
     if (currentPlayer === "game_over") {
       setBoardState(initialBoardState);
       setCurrentPlayer("x");
