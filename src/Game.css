@@ -1,0 +1,39 @@
+.game-board {
+  --x-color: #08f;
+  --o-color: #90c;
+  --border-color: color-mix(
+    in oklch,
+    color-mix(in oklch, var(--x-color), var(--o-color)),
+    #212529
+  );
+}
+
+.game-board {
+  width: 100%;
+  max-width: 75dvh;
+  aspect-ratio: 1;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-areas:
+    "tl tm tr"
+    "ml mm mr"
+    "bl bm br";
+}
+
+.game-piece {
+  background-position: center center;
+  background-size: 75%;
+  background-repeat: no-repeat;
+  border: 0.1rem solid;
+  border-color: var(--border-color);
+  border-collapse: collapse;
+
+  &.x {
+    background-color: var(--x-color);
+  }
+
+  &.o {
+    background-color: var(--o-color);
+  }
+}
