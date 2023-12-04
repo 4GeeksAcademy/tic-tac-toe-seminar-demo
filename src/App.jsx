@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import "./App.css";
 import { GameBoard, GamePiece } from "./Game";
+
 import x_bg from "./assets/x.svg";
 import o_bg from "./assets/o.svg";
+
+import "./App.css";
 
 const initialBoardState = () => {
   return Array(9).fill({
@@ -37,8 +39,8 @@ function App() {
   const [currentPlayer, setCurrentPlayer] = useState("x");
   const [boardState, setBoardState] = useState(initialBoardState());
 
-  const setPiece = (idx, player) => {
-    if (player === null) {
+  const setPiece = (idx) => {
+    if (currentPlayer === null) {
       return;
     }
 
@@ -54,7 +56,7 @@ function App() {
 
     setBoardState(
       boardState.toSpliced(idx, 1, {
-        player: player,
+        player: currentPlayer,
       })
     );
     setCurrentPlayer(currentPlayer === "x" ? "o" : "x");
@@ -95,7 +97,7 @@ function App() {
             piece={piece}
             key={idx}
             bg={bg.current[piece.player]}
-            onClick={() => setPiece(idx, currentPlayer)}
+            onClick={() => setPiece(idx)}
           />
         ))}
       </GameBoard>
